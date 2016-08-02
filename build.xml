@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="native-data-transfer" default="configure" basedir=".">
+   <!-- Override these properties in your ../config.properties file -->
+  <description>CN1 Native Data Transfer Build Tasks</description>
+  <property name="demo.dir" location="DNDDemo"/>
+  <property name="lib.dir" location="cn1-native-data-transfer-lib"/>
+  <target name="configure" description="Download dependencies">
+  
+        <get src="https://github.com/shannah/cn1make/raw/master/configure.xml" dest="${demo.dir}/configure.xml" skipexisting="true"/>
+        <ant inheritall="false" dir="${demo.dir}" antfile="configure.xml"/>
+        <delete file="${demo.dir}/configure.xml"/>
+        
+        <copy file="${demo.dir}/lib/CodenameOne.jar" tofile="${lib.dir}/lib/CodenameOne.jar"/>
+        <copy file="${demo.dir}/lib/CLDC11.jar" tofile="${lib.dir}/lib/CLDC11.jar"/>
+        <copy file="${demo.dir}/CodeNameOneBuildClient.jar" tofile="${lib.dir}/CodeNameOneBuildClient.jar"/>
+
+        
+  </target>
+  <target name="cn1lib" depends="configure" description="Build the cn1lib and copy it to the bin directory">
+    <ant inheritall="false" dir="${lib.dir}" target="jar"/>
+    <copy file="${lib.dir}/dist/cn1-native-data-transfer-lib.cn1lib" tofile="bin/cn1-native-data-transfer-lib.cn1lib"/>
+  </target>
+  <target name="run-demo" depends="cn1lib" description="Run the Drag and Drop demo project in simulator">
+    <ant inheritall="false" dir="${demo.dir}" target="jar"/>
+    <ant inheritall="false" dir="${demo.dir}" target="run"/>
+  </target>
+</project>

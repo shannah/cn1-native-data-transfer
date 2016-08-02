@@ -1,0 +1,8 @@
+*.jar
+*.class
+*.cn1lib
+private
+CodenameOne_SRC.zip
+build
+dist
+!bin/*
