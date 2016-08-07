@@ -312,7 +312,7 @@
             vendor="${codename1.vendor}"
             subtitle="${codename1.secondaryTitle}"
             
-            targetType="debug_javascript_steve"
+            targetType="javascript"
             />
     </target>    
     
