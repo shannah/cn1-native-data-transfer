@@ -29,7 +29,9 @@ var o = {};
                 }
                 var index = addTempFile(files[0]);
                 var tmpFilePath = "tmp://"+index;
-                fireDropEvent(t(evt.clientX), t(evt.clientY), $rt_str(tmpFilePath));
+                //console.log("File path "+tmpFilePath);
+                //console.log($rt_str(tmpFilePath));
+                fireDropEvent(t(evt.clientX), t(evt.clientY), tmpFilePath);
             };
             
             
