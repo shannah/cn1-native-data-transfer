@@ -43,9 +43,9 @@ var o = {};
                 evt.preventDefault();
             };
             
-            jQuery('#codenameone-canvas').get(0).addEventListener('drop', handleDrop, false);
-            jQuery('#codenameone-canvas').get(0).addEventListener('dragover', handleDragOver, false);
-            jQuery('#codenameone-canvas').get(0).addEventListener('dragleave', handleDragLeave, false);
+            jQuery('#codenameone-canvas').parent().get(0).addEventListener('drop', handleDrop, false);
+            jQuery('#codenameone-canvas').parent().get(0).addEventListener('dragover', handleDragOver, false);
+            jQuery('#codenameone-canvas').parent().get(0).addEventListener('dragleave', handleDragLeave, false);
             //console.log("Add added listener to canvas");
             //console.log(jQuery('#codenameone-canvas').get(0));
         } finally {
@@ -56,9 +56,9 @@ var o = {};
     o.stopGlobalDropListener_ = function(callback) {
         try {
             if (handleDrop !== null) {
-                jQuery('#codenameone-canvas').get(0).removeEventListener('drop', handleDrop);
-                jQuery('#codenameone-canvas').get(0).removeEventListener('dragover', handleDragOver);
-                jQuery('#codenameone-canvas').get(0).removeEventListener('dragleave', handleDragLeave);
+                jQuery('#codenameone-canvas').parent().get(0).removeEventListener('drop', handleDrop);
+                jQuery('#codenameone-canvas').parent().get(0).removeEventListener('dragover', handleDragOver);
+                jQuery('#codenameone-canvas').parent().get(0).removeEventListener('dragleave', handleDragLeave);
                 handleDrop = null;
                 
             }
