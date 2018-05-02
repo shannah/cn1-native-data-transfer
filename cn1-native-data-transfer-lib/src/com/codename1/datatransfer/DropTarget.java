@@ -64,11 +64,20 @@ public class DropTarget {
      */
     public static DropTarget create(ActionListener response, int type) {
         DropTarget target = new DropTarget(response, type);
-        targets.add(target);
-        if (targets.size() == 1) {
-            peer.startGlobalDropListener();
-        }
+        target.start();
         return target;
+    }
+    
+    /**
+     * Restarts drag and drop after if has been stopped.
+     */
+    public void start() {
+        if (!targets.contains(this)) {
+            targets.add(this);
+            if (targets.size() == 1) {
+                peer.startGlobalDropListener();
+            }
+        }
     }
     
     /**
